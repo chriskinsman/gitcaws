@@ -10,7 +10,7 @@ All operations get the private keys to the local file system, use them for the r
 
 ## Configuration
 
-Configuration options are in the .env file in the root of the project. Each of these options set environment variables. If you already have an AWS_PROFILE or AWS_REGION defined you may delete them from the .env file.
+Configuration options are in the .env file in the root of the project. Each of these options set environment variables. If you already have an AWS_PROFILE or AWS_REGION defined in your environment you may delete them from the .env file.
 
 ## Getting Started
 
@@ -18,13 +18,12 @@ The process to stand up an AWS Client VPN endpoint using gitcaws would be:
 1. git clone 
 2. npm ci
 3. npm link
-4. init-ca - Creates the PKI directory, creates the key pair for the CA, stores the private key in Secrets manager and deletes the private key.  Should only be done once.
-5. create-server - Creates the server key pair for the client vpn endpoint.
-6. Use ca.crt, issued/gitcaws-server.crt and private/gitcaws-server.key to create a new client VPN endpoint
-7. Delete the private/gitcaws-server.key
-8. Add VPN_CLIENT_ENDPOINT_ID to the .env file at the root
-9. create-client-ovpn firstnamelastname - This will generate the .ovpn file for the user
-10. Import the firstnamelastname.ovpn file into your OpenVPN client and connect
+4. init-ca - Creates the PKI directory, creates the key pair for the CA, stores the private key in Secrets manager, uploads the certificate to ACM and deletes the private key.  Should only be done once.
+5. create-server - Creates the server key pair for the client vpn endpoint, stores the private key in Secrets manager, uploads the certificate to ACM and deletes the private key. Should only be done once.
+6. Use the gitcaws-server cert in ACM to create a new client VPN endpoint
+7. Add VPN_CLIENT_ENDPOINT_ID to the .env file at the root
+8. create-client-ovpn firstnamelastname - This will generate the .ovpn file for the user
+9. Import the firstnamelastname.ovpn file into your OpenVPN client and connect
 
 After any operation make sure to check in the changes and push them to github.  We need to keep track of the public cert files to enable revocation, etc.
 
