@@ -1,0 +1,6 @@
+easyrsa3/pki/private
+node_modules
+*.ovpn
+*.key
+.DS_Store
+.vscode

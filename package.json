@@ -1,0 +1,30 @@
+{
+  "name": "gitcaws",
+  "version": "1.0.0",
+  "description": "A simple git based Certificate Authority for AWS Client Endpoints",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "init-ca": "./init-ca.js",
+    "create-server": "./create-server.js",
+    "revoke-client": "./revoke-client.js",
+    "create-client-ovpn": "./create-client-ovpn.js"
+  },
+  "keywords": [
+    "git",
+    "CA",
+    "AWS",
+    "Client",
+    "VPN",
+    "Endpoint"
+  ],
+  "author": "Chris Kinsman",
+  "license": "GPL-2.0-only",
+  "dependencies": {
+    "aws-sdk": "^2.713.0",
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0"
+  }
+}
