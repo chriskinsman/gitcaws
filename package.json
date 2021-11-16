@@ -23,7 +23,7 @@
   "author": "Chris Kinsman",
   "license": "GPL-2.0-only",
   "dependencies": {
-    "aws-sdk": "^2.713.0",
+    "aws-sdk": "^2.814.0",
     "debug": "^4.1.1",
     "dotenv": "^8.2.0"
   }
